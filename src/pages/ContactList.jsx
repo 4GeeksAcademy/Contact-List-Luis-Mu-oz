@@ -1,5 +1,3 @@
-import { API_BASE_URL } from "../apiConfig";
-
 export const ContactList = () => {
   const { store, dispatch } = useContext(Context);
   const [modalState, setModalState] = useState({ show: false, contactId: null });

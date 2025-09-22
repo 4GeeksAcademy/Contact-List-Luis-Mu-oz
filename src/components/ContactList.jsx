@@ -9,7 +9,7 @@ export const ContactList = () => {
   const [showModal, setShowModal] = useState(false);
   const [contactToDelete, setContactToDelete] = useState(null);
 
-  // Carga los contactos al montar el componente
+
   useEffect(() => {
     const loadContacts = async () => {
       const url = `${store.baseURL}/agendas/${store.agenda}/contacts`;
@@ -19,7 +19,6 @@ export const ContactList = () => {
           const data = await response.json();
           dispatch({ type: 'setContacts', payload: data.contacts || [] });
         } else if (response.status === 404) {
-          // Si la agenda no existe, la crea
           await fetch(`${store.baseURL}/agendas/${store.agenda}`, { method: "POST" });
           dispatch({ type: 'setContacts', payload: [] });
         }
@@ -30,19 +29,19 @@ export const ContactList = () => {
     loadContacts();
   }, [store.agenda, store.baseURL, dispatch]);
 
- 
+
   const handleDeleteRequest = (contact) => {
     setContactToDelete(contact);
     setShowModal(true);
   };
 
- 
+
   const cancelDelete = () => {
     setContactToDelete(null);
     setShowModal(false);
   };
 
- 
+
   const confirmDelete = async () => {
     if (!contactToDelete) return;
     const url = `${store.baseURL}/agendas/${store.agenda}/contacts/${contactToDelete.id}`;
@@ -68,15 +67,15 @@ export const ContactList = () => {
           Tu nuevo contacto📲
         </Link>
       </div>
-      
+
       <h2 className="mb-4">Lista de Contactos📜</h2>
 
       {store.contacts.length > 0 ? (
         <ul className="list-group">
           {store.contacts.map((contact) => (
-            <ContactCard 
-              key={contact.id} 
-              contact={contact} 
+            <ContactCard
+              key={contact.id}
+              contact={contact}
               onDeleteRequest={() => handleDeleteRequest(contact)}
             />
           ))}
