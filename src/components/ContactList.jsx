@@ -18,7 +18,7 @@ export const ContactList = () => {
         if (response.ok) {
           const data = await response.json();
           dispatch({ type: 'setContacts', payload: data.contacts || [] });
-        } else if (response.status === 404) {
+        } if (response.status === 404) {
           await fetch(`${store.baseURL}/agendas/${store.agenda}`, { method: "POST" });
           dispatch({ type: 'setContacts', payload: [] });
         }

@@ -5,11 +5,11 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-light bg-light">
 			<div className="container">
-				<Link>
-					<a onClick href="http://www.4geeksacademy.com" className="navbar-brand mb-0 h1">4GEEKSACADEMY</a>
-				</Link>
+				
+					<a href="http://www.4geeksacademy.com" className="navbar-brand mb-0 h1 text-decoration-underline">4GEEKSACADEMY</a>
+			
 				<div className="ml-auto">
-					<i class="fa-brands fa-react"></i>
+					<i className="fa-brands fa-react"></i>
 				</div>
 			</div>
 		</nav>
